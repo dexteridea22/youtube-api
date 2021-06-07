@@ -1,4 +1,3 @@
-
 import logging
 from traceback import format_exc
 
@@ -17,7 +16,6 @@ logging.basicConfig(level=logging.INFO)
 
 ma = Marshmallow()
 CONFIG = ""
-
 
 
 def create_app(env, additional_settings=None):
@@ -42,7 +40,7 @@ def create_app(env, additional_settings=None):
 
     api.add_namespace(yt_videos_ns, path="/yt-videos")
 
-    from core.management.commands import dump_yt_data,mongo
+    from core.management.commands import dump_yt_data, mongo
 
     app.cli.add_command(mongo)
     app.cli.add_command(dump_yt_data)
