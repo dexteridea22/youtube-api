@@ -14,7 +14,10 @@ CONFIG = config[os.getenv("ENV")]
 
 
 # TODO configure multiple API keys
-class YoutubeWrapper:
+class YoutubeWrapper(object):
+    """
+    Wraps Youtube API calls , Add new methods for this API here
+    """
     DEVELOPER_KEY = CONFIG.DEVELOPER_KEY
     YOUTUBE_API_SERVICE_NAME = CONFIG.YOUTUBE_API_SERVICE_NAME
     YOUTUBE_API_VERSION = CONFIG.YOUTUBE_API_VERSION
@@ -24,6 +27,11 @@ class YoutubeWrapper:
 
     @staticmethod
     def search(options):
+        """
+        YT search API
+        :param options: parser args
+        :return: list of search response
+        """
         search_result = []
         youtube = build(
             YoutubeWrapper.YOUTUBE_API_SERVICE_NAME,
