@@ -1,0 +1,15 @@
+[general]
+contrib=contrib-title-conventional-commits,CT1
+
+[title-max-length]
+line-length=50
+
+[body-max-line-length]
+line-length=72
+
+[body-min-length]
+min-length=15
+
+[contrib-title-conventional-commits]
+# Specify allowed commit types. For details see: https://www.conventionalcommits.org/
+types = fix,refactor,feat,chore, docs, style, perf, test,revert,BREAKING CHANGE

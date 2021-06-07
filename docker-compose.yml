@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    command: python wsgi.py
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+    environment:
+      - ENV=dev
+    volumes:
+      - .:/youtube-video-api
+  mongodb:
+    image: mongo
+    container_name: new-mongodb
+    ports:
+      - 27017:27017
+    volumes:
+      - db-data:/data/db
+
+volumes:
+    db-data:
