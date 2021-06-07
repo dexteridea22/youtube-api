@@ -1,10 +1,10 @@
 FROM continuumio/miniconda3:latest
 
-WORKDIR /youtube-video-api
+WORKDIR /youtube-api
 
-COPY environment.yml /youtube-video-api/environment.yml
+COPY environment.yml /youtube-api/environment.yml
 
-COPY . /youtube-video-api/
+COPY . /youtube-api/
 
 RUN conda env create -f environment.yml
 

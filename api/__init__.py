@@ -33,37 +33,38 @@ def create_app(env, additional_settings=None):
     api = Api(
         doc=CONFIG.SWAGGER_DOCS,
     )
-    connect("yt_video", host="mongodb://mongodb/yt_video")
+    connect("yt_video",host="mongodb://mongodb/yt_video")
     ma.init_app(app)
 
     from api.youtube_video import yt_videos_ns
 
     api.add_namespace(yt_videos_ns, path="/yt-videos")
 
+
     from core.management.commands import dump_yt_data, mongo
 
     app.cli.add_command(mongo)
     app.cli.add_command(dump_yt_data)
 
-    @app.errorhandler(Exception)
-    def handle_internal_server_exception(error):
-        """Return error and status code"""
-        request_dict = request.__dict__["environ"]
-        code = 500
-        message = "Something went wrong"
-        if isinstance(error, HTTPException):
-            message = error.description
-            code = error.code
-
-        # This block added to dump error during development.
-        if CONFIG.ENV == "dev":
-            print(format_exc())
-
-        request_dict.update(
-            {"status_code": code, "exceptions": format_exc(), "error_log_dump": True}
-        )
-
-        return json_response(code, msg=message)
+    # @app.errorhandler(Exception)
+    # def handle_internal_server_exception(error):
+    #     """Return error and status code"""
+    #     request_dict = request.__dict__["environ"]
+    #     code = 500
+    #     message = "Something went wrong"
+    #     if isinstance(error, HTTPException):
+    #         message = error.description
+    #         code = error.code
+    #
+    #     # This block added to dump error during development.
+    #     if CONFIG.ENV == "dev":
+    #         print(format_exc())
+    #
+    #     request_dict.update(
+    #         {"status_code": code, "exceptions": format_exc(), "error_log_dump": True}
+    #     )
+    #
+    #     return json_response(code, msg=message)
 
     api.init_app(app)
     return app

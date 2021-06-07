@@ -38,7 +38,7 @@ class DataDumper:
                     "thumbnailURL": thumbnailURL,
                 }
                 video = VideoModel(**payload)
-                video.update()
+                video.save()
                 count += 1
         print(f"Total Dumped {count} videos")
 

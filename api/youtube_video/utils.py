@@ -2,11 +2,9 @@ import os
 from core import pagination
 from api.youtube_video.models import VideoModel
 from api import CONFIG
-from config import config
+from config import  config
 from datetime import datetime
-
 CONFIG = config[os.getenv("ENV")]
-
 
 def list_videos(query_arguments, fields):
     """
