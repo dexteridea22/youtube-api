@@ -13,7 +13,7 @@
 
 [Install Docker](https://www.docker.com/products/docker-desktop) if you don't have it yet and run the container:
 
-###Docker Setup
+### Docker Setup
 
 ### Container and Image Setup
 ```
@@ -36,11 +36,12 @@ python  core/batch/youtube-data/dump_videos.py
 
 ````
 
-###SWAGGER
+### SWAGGER
 
 [Swagger Docs](https://0.0.0.0:5000/docs) Runs on host specified here port 5000
 
-###Sample mongod data load commands
+### Sample mongod data load commands
+
 ```
 db.youtube_videos.insert({
  "_id" : ObjectId("60bdc342edbe8a7cdf63f9df"),
@@ -75,16 +76,28 @@ db.youtube_videos.insert({
 }) 
  
 ```
+         
+## Demo API Screenshots
+
+![image](demo-images/basic_search.png)
+
+![image](demo-images/full_text_search.png)
+
+![image](demo-images/get_api_paginated.png)
+
+![image](demo-images/get_api_filtered_sorted.png)
+
+
+
 
 ## SETUP WITHOUT DOCKER
 
+### Install Anaconda 
 
-### Install Anaconda
 ```
 wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh   
 ```
-
 
 ### Install Mongo
 ```

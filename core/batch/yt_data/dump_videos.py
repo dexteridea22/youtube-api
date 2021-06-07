@@ -36,6 +36,7 @@ class DataDumper:
                     "description": description,
                     "published_date": published_date,
                     "thumbnailURL": thumbnailURL,
+                    "search_query": CONFIG.DEFAULT_SEARCH_YT
                 }
                 video = VideoModel(**payload)
                 video.save()
@@ -57,7 +58,7 @@ class DataDumper:
             "--publishedAfter",
             help="All result published after this date",
             default=(
-                datetime.utcnow() - timedelta(days=int(CONFIG.YOUTUBE_CRON_START_DAY))
+                    datetime.utcnow() - timedelta(days=int(CONFIG.YOUTUBE_CRON_START_DAY))
             ).strftime("%Y-%m-%dT%H:%M:%SZ"),
         )
         return parser
@@ -75,8 +76,8 @@ class DataDumper:
             args = parser.parse_args()
             if not is_first:
                 args.publishedAfter = (
-                    datetime.utcnow()
-                    - timedelta(seconds=int(CONFIG.YOUTUBE_API_CALL_LAG_IN_SECONDS))
+                        datetime.utcnow()
+                        - timedelta(seconds=int(CONFIG.YOUTUBE_API_CALL_LAG_IN_SECONDS))
                 ).strftime("%Y-%m-%dT%H:%M:%SZ")
             print("=======Initiated========")
             response = YoutubeWrapper.search(args)

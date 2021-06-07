@@ -13,5 +13,6 @@ class VideoSchema(ma.Schema):
     description = ma_fields.String()
     published_date = ma_fields.DateTime()
     thumbnailURL = ma_fields.Url()
+    search_query = ma_fields.String()
     created_at = ma_fields.DateTime()
     modified_at = ma_fields.DateTime()

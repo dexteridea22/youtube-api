@@ -19,6 +19,9 @@ from .schemas import VideoSchema
 
 @yt_videos_ns.route("/v1/videos")
 class VideoList(Resource):
+    """
+    Listing Videos
+    """
     @yt_videos_ns.expect(video_list_parser)
     @yt_videos_ns.doc(
         responses={200: "Ok", 422: "Validation Error", 500: "Internal Server Error"}
@@ -61,6 +64,9 @@ class VideoList(Resource):
 
 @yt_videos_ns.route("/v1/search")
 class VideoSearch(Resource):
+    """
+    Searching API
+    """
     @yt_videos_ns.expect(search_parser)
     @yt_videos_ns.doc(
         responses={201: "Ok", 422: "Validation Error", 500: "Internal Server Error"}

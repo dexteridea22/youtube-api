@@ -1,3 +1,4 @@
+import os
 from mongoengine import (
     StringField,
     URLField,
@@ -5,6 +6,8 @@ from mongoengine import (
 )
 
 from core.abstract import AuditModel
+from config import config
+CONFIG = config[os.getenv("ENV")]
 
 """
 Indexes -> Full text search enabled on title,descritpion with weight of title higher in search score
@@ -39,3 +42,4 @@ class VideoModel(AuditModel):
     description = StringField()
     published_date = DateTimeField()
     thumbnailURL = URLField()
+    search_query = StringField(default=CONFIG.DEFAULT_SEARCH_YT)

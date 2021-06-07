@@ -46,25 +46,25 @@ def create_app(env, additional_settings=None):
     app.cli.add_command(mongo)
     app.cli.add_command(dump_yt_data)
 
-    # @app.errorhandler(Exception)
-    # def handle_internal_server_exception(error):
-    #     """Return error and status code"""
-    #     request_dict = request.__dict__["environ"]
-    #     code = 500
-    #     message = "Something went wrong"
-    #     if isinstance(error, HTTPException):
-    #         message = error.description
-    #         code = error.code
-    #
-    #     # This block added to dump error during development.
-    #     if CONFIG.ENV == "dev":
-    #         print(format_exc())
-    #
-    #     request_dict.update(
-    #         {"status_code": code, "exceptions": format_exc(), "error_log_dump": True}
-    #     )
-    #
-    #     return json_response(code, msg=message)
+    @app.errorhandler(Exception)
+    def handle_internal_server_exception(error):
+        """Return error and status code"""
+        request_dict = request.__dict__["environ"]
+        code = 500
+        message = "Something went wrong"
+        if isinstance(error, HTTPException):
+            message = error.description
+            code = error.code
+
+        # This block added to dump error during development.
+        if CONFIG.ENV == "dev":
+            print(format_exc())
+
+        request_dict.update(
+            {"status_code": code, "exceptions": format_exc(), "error_log_dump": True}
+        )
+
+        return json_response(code, msg=message)
 
     api.init_app(app)
     return app
