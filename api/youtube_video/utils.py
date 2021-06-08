@@ -1,8 +1,24 @@
 import os
 from core import pagination
 from api.youtube_video.models import VideoModel
-from config import  config
+from config import config
+
 CONFIG = config[os.getenv("ENV")]
+
+
+# class VideoBasicUtils(object):
+
+
+def create_video(payload):
+    """
+        Create Video
+    :param payload: Object of VideoSchema
+    :return: `VideoModel` Object
+    """
+    video_data = VideoModel(**payload)
+    video_data.save()
+    return video_data
+
 
 def list_videos(query_arguments, fields):
     """

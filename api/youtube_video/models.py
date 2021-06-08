@@ -7,12 +7,14 @@ from mongoengine import (
 
 from core.abstract import AuditModel
 from config import config
+
 CONFIG = config[os.getenv("ENV")]
 
 """
 Indexes -> Full text search enabled on title,descritpion with weight of title higher in search score
-            
 """
+
+
 class VideoModel(AuditModel):
     """
     Model to handle video for youtube search
@@ -25,15 +27,11 @@ class VideoModel(AuditModel):
         "ordering": ["- published_date"],
         "indexes": [
             "-published_date",
-            {
-                "fields": ["video_id"],
-                "unique": True
-            },
-
+            {"fields": ["video_id"], "unique": True},
             {
                 "fields": ["$title", "$description"],
                 "default_language": "english",
-                "weights": {"title": 10, "content": 5}
+                "weights": {"title": 10, "content": 5},
             },
         ],
     }

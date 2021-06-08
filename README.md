@@ -52,7 +52,7 @@ db.youtube_videos.insert({
  "published_date" : ISODate("2021-06-06T14:30:00Z"),
  "thumbnailURL" : "https://i.ytimg.com/vi/bJXLT597UzM/hqdefault.jpg"
  })
- 
+
 
 db.youtube_videos.insert({
  "_id" : ObjectId("60bdc342edbe8a7cdf63f9de"),
@@ -62,21 +62,21 @@ db.youtube_videos.insert({
  "description" : "Funny cricket tamil | Funny cricket moments | Funny Moments happened in Cricket | Cricket Comedy #funnycricket #cricketfunny #cricketcomedy In this video we ...",
  "published_date" : ISODate("2021-06-06T14:30:12Z"),
  "thumbnailURL" : "https://i.ytimg.com/vi/A1XZJxW-l_M/hqdefault.jpg"
- }) 
- 
+ })
+
 
 db.youtube_videos.insert({
-"_id" : ObjectId("60bdc342edbe8a7cdf63f9db"), 
-"created_at" : ISODate("2021-06-07T12:27:06.780Z"), 
-"video_id" : "WmdRH1Ypxnw", 
-"title" : "Best Of Euro #2,  Equipe de France I FFF 2021", 
-"description" : "Retrouvez les meilleurs moments de la deuxième semaine de rassemblement des Bleus de Didier Deschamps en vue de la préparation à l'Euro. Tous les buts ...", 
-"published_date" : ISODate("2021-06-06T15:00:11Z"), 
-"thumbnailURL" : "https://i.ytimg.com/vi/WmdRH1Ypxnw/hqdefault.jpg" 
-}) 
- 
+"_id" : ObjectId("60bdc342edbe8a7cdf63f9db"),
+"created_at" : ISODate("2021-06-07T12:27:06.780Z"),
+"video_id" : "WmdRH1Ypxnw",
+"title" : "Best Of Euro #2,  Equipe de France I FFF 2021",
+"description" : "Retrouvez les meilleurs moments de la deuxième semaine de rassemblement des Bleus de Didier Deschamps en vue de la préparation à l'Euro. Tous les buts ...",
+"published_date" : ISODate("2021-06-06T15:00:11Z"),
+"thumbnailURL" : "https://i.ytimg.com/vi/WmdRH1Ypxnw/hqdefault.jpg"
+})
+
 ```
-         
+
 ## Demo API Screenshots
 
 ![image](demo-images/basic_search.png)
@@ -92,11 +92,11 @@ db.youtube_videos.insert({
 
 ## SETUP WITHOUT DOCKER
 
-### Install Anaconda 
+### Install Anaconda
 
 ```
 wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh   
+bash Miniconda3-latest-Linux-x86_64.sh
 ```
 
 ### Install Mongo
@@ -124,5 +124,3 @@ Update Environment: conda env update --file environment.yml
 Conda activate {environment}
 python  core/batch/yt_data/dump_videos.py
 ```
-
-

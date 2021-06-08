@@ -9,12 +9,14 @@ from flask_marshmallow import Marshmallow
 from flask_restx import Api
 from mongoengine import connect
 
+# from flask_mongoengine import MongoEngine
 from core.common import json_response
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
 ma = Marshmallow()
+# yt = MongoEngine()
 CONFIG = ""
 
 
@@ -33,13 +35,13 @@ def create_app(env, additional_settings=None):
     api = Api(
         doc=CONFIG.SWAGGER_DOCS,
     )
-    connect("yt_video",host="mongodb://mongodb/yt_video")
+    connect("yt_video", host="mongodb://mongodb/yt_video")
     ma.init_app(app)
+    # yt.init_app(app)
 
     from api.youtube_video import yt_videos_ns
 
     api.add_namespace(yt_videos_ns, path="/yt-videos")
-
 
     from core.management.commands import dump_yt_data, mongo
 
